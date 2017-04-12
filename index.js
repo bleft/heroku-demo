@@ -1,4 +1,3 @@
-"use strict";
 var cool = require('cool-ascii-faces');
 var express = require('express');
 var app = express();
@@ -21,9 +20,8 @@ app.get('/cool', function(request, response) {
 
 app.get('/demo', function(request, response) {
     response.type('json');
-
-    let entries = {"Pullover", "Mützen", "Hosen", "Schuhe"};
-    response.status(200).send(entries);
+    var items = ["Mütze", "Schal", "Hose", "Jacke", "Strümpfe"];
+    response.status(200).send(items);
 
 });
 
