@@ -22,7 +22,9 @@ app.get('/demo', function(request, response) {
     response.type('json');
     var type = "Skifahren";
     var items = ["Mütze", "Schal", "Hose", "Jacke", "Strümpfe"];
-    var object = [type, items];
+    var object = new Object() ;
+    object.type = type;
+    object.items = items;
     response.status(200).send(object);
 
 });
@@ -30,3 +32,6 @@ app.get('/demo', function(request, response) {
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 });
+
+
+function Object(){};
