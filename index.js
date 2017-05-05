@@ -20,8 +20,10 @@ app.get('/cool', function(request, response) {
 
 app.get('/demo', function(request, response) {
     response.type('json');
+    var type = "Skifahren";
     var items = ["Mütze", "Schal", "Hose", "Jacke", "Strümpfe"];
-    response.status(200).send(items);
+    var object = [type, items];
+    response.status(200).send(object);
 
 });
 
