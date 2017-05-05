@@ -25,7 +25,6 @@ app.get('/demo', function(request, response) {
     var object = new Object() ;
     object.type = type;
     object.items = items;
-    var object = ["type":type, "items":items];
     response.status(200).send(object);
 
 });
