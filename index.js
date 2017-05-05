@@ -22,7 +22,7 @@ app.get('/demo', function(request, response) {
     response.type('json');
     var type = "Skifahren";
     var items = ["Mütze", "Schal", "Hose", "Jacke", "Strümpfe"];
-    var object = [type, items];
+    var object = ["type":type, "items":items];
     response.status(200).send(object);
 
 });
