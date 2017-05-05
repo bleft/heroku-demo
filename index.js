@@ -35,4 +35,6 @@ app.listen(app.get('port'), function() {
 });
 
 
+let Object = function() {
+}; 
 function Object(){};
