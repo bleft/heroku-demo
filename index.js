@@ -20,12 +20,9 @@ app.get('/cool', function(request, response) {
 
 app.get('/demo', function(request, response) {
     response.type('json');
-    var type = "Skifahren";
-    var items = ["Mütze", "Schal", "Hose", "Jacke", "Strümpfe"];
-    var object = new Object() ;
-    object.type = type;
-    object.items = items;
-    response.status(200).send(object);
+
+    var url = proc.env.PROD_MONGODB;
+    response.status(200).send(url);
 
 });
 
