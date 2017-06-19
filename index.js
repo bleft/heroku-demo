@@ -21,7 +21,7 @@ app.get('/cool', function(request, response) {
 app.get('/demo', function(request, response) {
     response.type('json');
 
-    var url = proc.env.PROD_MONGODB;
+    var url = process.env.PROD_MONGODB;
     response.status(200).send(url);
 
 });
