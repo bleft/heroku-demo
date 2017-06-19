@@ -23,14 +23,14 @@ app.get('/cool', function(request, response) {
 app.get('/demo', function(request, response) {
     response.type('json');
 
-    var url = process.env.PROD_MONGODB;
+    var url = process.env.PROD_MONGODB || 'mongodb://localhost:27017/reblaus';
     MongoClient.connect(url, function(err, db){
-        assert.equal(null, err);
-        var version = db.VersionInfo.findOne();
-        response.status(200).send(version);
-
+        console.log("Connected!");
+        db.close();
+        console.log("closed!");
+        response.status(200).send({"message":"all is up and running."});
     });
-    response.status(200).send({"message":"all is up and running."});
+
 
 });
 
