@@ -23,12 +23,20 @@ app.get('/cool', function(request, response) {
 app.get('/demo', function(request, response) {
     response.type('json');
 
-    var url = process.env.PROD_MONGODB || 'mongodb://localhost:27017/reblaus';
+    var sendResponse = function (test) {
+        response.status(200).send(test);
+    };
+
+    var url = process.env.PROD_MONGODB || "mongodb://demo:demo@ds131512.mlab.com:31512/reblaus"; //'mongodb://localhost:27017/reblaus';
     MongoClient.connect(url, function(err, db){
         console.log("Connected!");
+        var collection = db.collection('VersionInfo');
+        collection.findOne(function (err, doc) {
+            sendResponse(doc);
+        });
         db.close();
         console.log("closed!");
-        response.status(200).send({"message":"all is up and running."});
+
     });
 
 
