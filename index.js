@@ -23,7 +23,7 @@ app.get('/cool', function(request, response) {
 app.get('/demo', function(request, response) {
     response.type('json');
 
-    var url = "mongodb://reblausapi:'3+$6n>836}wY?3+'@ds131512.mlab.com:31512/reblaus"; // process.env.PROD_MONGODB;
+    var url = process.env.PROD_MONGODB;
     MongoClient.connect(url, function(err, db){
         assert.equal(null, err);
         var version = db.VersionInfo.findOne();
