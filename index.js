@@ -20,7 +20,7 @@ app.get('/cool', function(request, response) {
   response.send(cool());
 });
 
-app.get('/demo', function(request, response) {
+app.get('/version', function(request, response) {
     response.type('json');
 
     var sendResponse = function (test) {
@@ -29,14 +29,11 @@ app.get('/demo', function(request, response) {
 
     var url = process.env.PROD_MONGODB || "mongodb://demo:demo@ds131512.mlab.com:31512/reblaus"; //'mongodb://localhost:27017/reblaus';
     MongoClient.connect(url, function(err, db){
-        console.log("Connected!");
         var collection = db.collection('VersionInfo');
-        collection.findOne(function (err, doc) {
+         collection.findOne({},{version:1, build:1, _id:0}, function (err, doc) {
             sendResponse(doc);
         });
         db.close();
-        console.log("closed!");
-
     });
 
 
